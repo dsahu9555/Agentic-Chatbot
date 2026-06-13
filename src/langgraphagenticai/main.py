@@ -19,28 +19,32 @@ def load_langgraph_agenticai_app():
     if not user_input:
         st.error("Error: Failed to load user input from the UI.")
         return 
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
     
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.write(message["content"])
+    
+    #Text input for user message
+    if st.session_state.IsFetchButtonClicked:
+        user_message = st.session_state.timeframe
+    else:
+        user_message = st.chat_input("Enter your message:")
+    
+    # if "messages" not in st.session_state:
+    #     st.session_state.messages = []
+    
+    # for message in st.session_state.messages:
+    #     with st.chat_message(message["role"]):
+    #         st.write(message["content"])
 
-    user_message = st.chat_input("Enter your message:")
+    # user_message = st.chat_input("Enter your message:")
 
-    if user_message:
 
-        st.session_state.messages.append(
 
-            {
-
-                "role": "user",
-
-                "content": user_message
-
-            }
-
-        )
+    # if user_message:
+    #     st.session_state.messages.append(
+    #         {
+    #             "role": "user",
+    #             "content": user_message
+    #         }
+    #     )
 
     if user_message:
         try:
